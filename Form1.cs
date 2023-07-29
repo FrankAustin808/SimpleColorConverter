@@ -21,36 +21,28 @@ namespace MaterialSlider
             InitializeComponent();
         }
 
-        private void applyColor()
-        {
-            colorPanel.BackColor = Color.FromArgb(Red, Green, Blue);
-
-            colorOutLabel.Caption = $"{redSlider.Value.ToString()}, {greenSlider.Value.ToString()}, {blueSlider.Value.ToString()}";
-        }
-
         private void redSlider_EditValueChanged(object sender, EventArgs e)
         {
             Red = Convert.ToInt32(redSlider.Value);
-            applyColor();
+            colorPanel.BackColor = Color.FromArgb(Red, Green, Blue);
         }
 
         private void greenSlider_EditValueChanged(object sender, EventArgs e)
         {
             Green = Convert.ToInt32(greenSlider.Value);
-            applyColor();
+            colorPanel.BackColor = Color.FromArgb(Red, Green, Blue);
         }
 
         private void blueSlider_EditValueChanged(object sender, EventArgs e)
         {
             Blue = Convert.ToInt32(blueSlider.Value);
-            applyColor();
+            colorPanel.BackColor = Color.FromArgb(Red, Green, Blue);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             colorOutLabel.Caption = $"{redSlider.Value.ToString()}, {greenSlider.Value.ToString()}, {blueSlider.Value.ToString()}";
-
-            
+            colorOutput.Start();
         }
 
         private void outputSelector_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -78,6 +70,11 @@ namespace MaterialSlider
             {
 
             }
+        }
+
+        private void colorOutput_Tick(object sender, EventArgs e)
+        {
+            colorOutLabel.Caption = $"{redSlider.Value.ToString()}, {greenSlider.Value.ToString()}, {blueSlider.Value.ToString()}";
         }
     }
 }
